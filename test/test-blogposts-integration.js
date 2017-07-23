@@ -127,7 +127,8 @@ describe('BlogPosts API resource', function() {
         })
         .then(function(count) {
           //res.body.posts.should.have.length.of(count);
-          res.body.should.have.length.of(count);
+          //res.body.should.have.length.of(count);
+          res.body.length.should.equal(count);
         });
     });
 
