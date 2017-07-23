@@ -19,7 +19,7 @@ chai.use(chaiHttp);
 // generate placeholder values for author, title, content
 // and then we insert that data into mongo
 function seedBlogPostData() {
-  console.info('seeding blog data');
+  console.info('seeding blog post data');
   const seedData = [];
 
   for (let i=1; i<=10; i++) {
@@ -30,26 +30,26 @@ function seedBlogPostData() {
 }
 
 // used to generate data to put in db
-function generateBoroughName() {
-  const boroughs = [
-    'Manhattan', 'Queens', 'Brooklyn', 'Bronx', 'Staten Island'];
-  return boroughs[Math.floor(Math.random() * boroughs.length)];
+function generateAuthorFirstName() {
+  const authorFirstName = [
+    'Bobby', 'Sue', 'Melvin', 'Jean', 'Vance'];
+  return authorFirstName[Math.floor(Math.random() * authorFirstName.length)];
 }
 
-// used to generate data to put in db
-function generateCuisineType() {
-  const cuisines = ['Italian', 'Thai', 'Colombian'];
-  return cuisines[Math.floor(Math.random() * cuisines.length)];
+function generateAuthorLastName() {
+  const authorLastName = [
+    'Smith', 'Jones', 'Nelson', 'Fields', 'Hill'];
+  return authorLastName[Math.floor(Math.random() * authorLastName.length)];
 }
 
-// used to generate data to put in db
-function generateGrade() {
-  const grades = ['A', 'B', 'C', 'D', 'F'];
-  const grade = grades[Math.floor(Math.random() * grades.length)];
-  return {
-    date: faker.date.past(),
-    grade: grade
-  }
+function generateTitle() {
+  const postContent = ['Thoughts', 'Musings', 'Ramblings', 'Ponderings', 'Insights'];
+  return postContent[Math.floor(Math.random() * postContent.length)];
+}
+
+function generateContent() {
+  const postContent = ['This', 'That', 'The other', 'Also this', 'Also that'];
+  return postContent[Math.floor(Math.random() * postContent.length)];
 }
 
 // generate an object represnting a blog post.
@@ -57,15 +57,13 @@ function generateGrade() {
 // or request.body data
 function generateBlogPostData() {
   return {
-    name: faker.company.companyName(),
-    borough: generateBoroughName(),
-    cuisine: generateCuisineType(),
-    address: {
-      building: faker.address.streetAddress(),
-      street: faker.address.streetName(),
-      zipcode: faker.address.zipCode()
+    title: generateCuisineType(),
+    author: {
+      firstName: generateAuthorFirstName(),
+      lastName: generateAuthorLastName()
     },
-    grades: [generateGrade(), generateGrade(), generateGrade()]
+    content: generateContent()
+    created: faker.date.past()
   }
 }
 
