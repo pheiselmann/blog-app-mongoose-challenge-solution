@@ -57,7 +57,7 @@ function generateContent() {
 // or request.body data
 function generateBlogPostData() {
   return {
-    title: generateCuisineType(),
+    title: generateTitle(),
     author: {
       firstName: generateAuthorFirstName(),
       lastName: generateAuthorLastName()
