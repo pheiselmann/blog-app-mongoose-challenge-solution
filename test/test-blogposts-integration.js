@@ -62,7 +62,7 @@ function generateBlogPostData() {
       firstName: generateAuthorFirstName(),
       lastName: generateAuthorLastName()
     },
-    content: generateContent()
+    content: generateContent(),
     created: faker.date.past()
   }
 }
