@@ -206,8 +206,8 @@ describe('BlogPosts API resource', function() {
     //  4. Prove blog post in db is correctly updated
     it('should update fields you send over', function() {
       const updateData = {
-        name: 'fofofofofofofof',
-        cuisine: 'futuristic fusion'
+        title: 'fofofofofofofof',
+        content: 'futuristic vision'
       };
 
       return BlogPost
@@ -228,8 +228,8 @@ describe('BlogPosts API resource', function() {
           return BlogPost.findById(updateData.id).exec();
         })
         .then(function(post) {
-          post.name.should.equal(updateData.name);
-          post.cuisine.should.equal(updateData.cuisine);
+          post.title.should.equal(updateData.title);
+          post.content.should.equal(updateData.content);
         });
       });
   });
