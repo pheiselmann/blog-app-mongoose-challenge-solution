@@ -169,7 +169,6 @@ describe('BlogPosts API resource', function() {
     it('should add a new blog post', function() {
 
       const newBlogPost = generateBlogPostData();
-      let mostRecentGrade;
 
       return chai.request(app)
         .post('/posts')
@@ -179,27 +178,21 @@ describe('BlogPosts API resource', function() {
           res.should.be.json;
           res.body.should.be.a('object');
           res.body.should.include.keys(
-            'id', 'name', 'cuisine', 'borough', 'grade', 'address');
-          res.body.name.should.equal(newBlogPost.name);
+            'id', 'author', 'title', 'content', 'created');
+          res.body.title.should.equal(newBlogPost.title);
           // cause Mongo should have created id on insertion
           res.body.id.should.not.be.null;
-          res.body.cuisine.should.equal(newBlogPost.cuisine);
-          res.body.borough.should.equal(newBlogPost.borough);
+          res.body.content.should.equal(newBlogPost.content);
+          res.body.created.should.equal(newBlogPost.created);
 
-          mostRecentGrade = newBlogPost.grades.sort(
-            (a, b) => b.date - a.date)[0].grade;
-
-          res.body.grade.should.equal(mostRecentGrade);
           return BlogPost.findById(res.body.id);
         })
         .then(function(post) {
-          post.name.should.equal(newBlogPost.name);
-          post.cuisine.should.equal(newBlogPost.cuisine);
-          post.borough.should.equal(newBlogPost.borough);
-          post.grade.should.equal(mostRecentGrade);
-          post.address.building.should.equal(newBlogPost.address.building);
-          post.address.street.should.equal(newBlogPost.address.street);
-          post.address.zipcode.should.equal(newBlogPost.address.zipcode);
+          post.title.should.equal(newBlogPost.title);
+          post.content.should.equal(newBlogPost.content);
+          post.created.should.equal(newBlogPost.created);
+          post.author.firstName.should.equal(newBlogPost.author.firstName);
+          post.author.lastName.should.equal(newBlogPost.author.lastName);
         });
     });
   });
