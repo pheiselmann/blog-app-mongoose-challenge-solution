@@ -145,7 +145,7 @@ describe('BlogPosts API resource', function() {
           res.body.posts.forEach(function(post) {
             post.should.be.a('object');
             post.should.include.keys(
-              'id', 'name', 'cuisine', 'borough', 'grade', 'address');
+              'id', 'author', 'title', 'content', 'created');
           });
           resBlogPost = res.body.posts[0];
           return BlogPost.findById(resBlogPost.id);
@@ -153,12 +153,10 @@ describe('BlogPosts API resource', function() {
         .then(function(post) {
 
           resBlogPost.id.should.equal(post.id);
-          resBlogPost.name.should.equal(post.name);
-          resBlogPost.cuisine.should.equal(post.cuisine);
-          resBlogPost.borough.should.equal(post.borough);
-          resBlogPost.address.should.contain(post.address.building);
-
-          resBlogPost.grade.should.equal(post.grade);
+          resBlogPost.author.should.contain(post.author.firstName);
+          resBlogPost.title.should.equal(post.title);
+          resBlogPost.content.should.equal(post.content);
+          resBlogPost.created.should.equal(post.created);
         });
     });
   });
