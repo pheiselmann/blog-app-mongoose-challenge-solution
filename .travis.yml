@@ -2,3 +2,10 @@ language: node_js
 node_js: node
 services:
 - mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: Y8qxIh2LJumf9KTQ/dYjj0yZ/RAxLMpi5nL0yBF+JaCdHHpsQCX9F548W+0jOjr8IgUJMnj6rOCp03JLJYHLN6p4diWwZ1o/+whwu1x6jjnPxdzZuU6wNEhFItJpqaeqCS1o4Agr5BbunkJeOSuDc3IKDHgrNprDoJzijHeLTpzKehSfgM9oAr+huOIindst4empSrCEqVcADRnRsjFuvqLd4qTG4jlH6GZQ/KsaeMjAcco69uu2p1mwTw7yf8ZX8ZMJu1/gsEiBHVaVrzezAXG8s6Gxa0b3Dc0qLJp66y4loDj5fmY8eBsChwEuljkTLCsmIM3ymjnGRDKqAgFiwYpXODrjzqIIhCzfv/e5mJpUQMqVii/6dpvowgiX1X1JJ6MJlGhq1GjidvbTL09HkLfpFaNwjVtviU5NbtH7F98H0Z75JdqvSFMvau6xvDOv1Nlp3VpEPxCcxudYNiUbL8KCvat4BHd8BZyE60RpgXdjdN489oQz0d4M5WRJ7trLa6SnO0srBg60gsKzDjcXQuUdff6nNH1LE+FsUbMMq9VxTXbO/+enM0C/ClOrF/UgqZryfBbGuXIJC1atWy69yMDjWSpTd/iK+UbjAXsPhSm4kHndZJUXCLu6JG/3JSQ0njS/3nSDtV1bYQ1ErohThOMmHFUFccBkV5VoO+yCbbI=
+  app: obscure-mountain-66964
+  on:
+    repo: pheiselmann/blog-app-mongoose-challenge-solution
