@@ -132,7 +132,7 @@ describe('BlogPosts API resource', function() {
         });
     });
 
-
+//adding something for new commit
     it('should return blog posts with right fields', function() {
       // Strategy: Get back all blog posts, and ensure they have expected keys
 
